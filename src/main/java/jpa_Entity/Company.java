@@ -1,3 +1,4 @@
+package jpa_Entity;
 
 import jakarta.persistence.*;
 
