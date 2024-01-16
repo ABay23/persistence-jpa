@@ -5,11 +5,11 @@ import jpa_Entity.Employee;
 
 import java.util.Optional;
 
-public class EmployeeRepositotryImpl implements EmployeeRepository {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private EntityManager entityManager;
 
-    public EmployeeRepositotryImpl(EntityManager entityManager){
+    public EmployeeRepositoryImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
@@ -29,5 +29,24 @@ public class EmployeeRepositotryImpl implements EmployeeRepository {
             e.printStackTrace();
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<Employee> getEmployeeById(Long id){
+        Employee employee = entityManager.find(Employee.class, id);
+        return employee != null ? Optional.of(employee) : Optional.empty();
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee){
+        entityManager.getTransaction().begin();
+
+        if(entityManager.contains(employee)){
+            entityManager.remove(employee);
+        } else {
+            entityManager.merge(employee);
+        }
+
+        entityManager.getTransaction().commit();
     }
 }

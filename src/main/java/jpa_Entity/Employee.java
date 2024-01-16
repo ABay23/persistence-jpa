@@ -3,6 +3,7 @@ package jpa_Entity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -36,6 +37,7 @@ public class Employee implements Serializable {
         this.fname = fname;
         this.lname = lname;
         this.yearsExperience = yearsExperience;
+//        this.companies = companies;
     }
 
     public Long getId() {
