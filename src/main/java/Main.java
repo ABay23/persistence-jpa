@@ -28,7 +28,7 @@ public class Main {
 //        employee.setSalary(new Salary(54000.00, true));
 
         //* save employee
-//        Optional<Employee> savedEmployee = employeeRepository.save(employee);
+        Optional<Employee> savedEmployee = employeeRepository.save(employee);
 
 //        System.out.println("Don't forget to launch Postgres before running this code!");
 
